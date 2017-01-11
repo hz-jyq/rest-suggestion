@@ -16,6 +16,7 @@ public  class  StartSuggestionRest extends  StartRest {
 		@Override
 		public ResourceConfig settingResourceConfig(ResourceConfig rc) {
 		    rc.packages("com.fengdai.suggestion.resource");
+		    rc.packages("com.fengdai.rest.config");
 		    return rc;
 		}  
 }
