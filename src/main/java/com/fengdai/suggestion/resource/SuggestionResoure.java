@@ -3,6 +3,7 @@ package com.fengdai.suggestion.resource;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -23,10 +24,17 @@ public class SuggestionResoure{
 	MySuggestionService  mySuggestionService=SuggestionApiProvider.getMySuggestionService();
 	
 	@GET
-	@Path("/thing")
-	public Response get() {
+	@Path("Detail")
+	public Response getDetail(@QueryParam("id") String id) {
 		System.out.println("=----成功-----");
-		MySuggestion mySuggestion=mySuggestionService.selectByPrimaryKey("11");
+		MySuggestion mySuggestion=mySuggestionService.selectByPrimaryKey(id);
+		return ResourceHelper.returnSuccess(GSON.toJson(mySuggestion));
+	}
+	
+	@GET
+	public Response getPage() {
+		System.out.println("=----成功-----");
+		MySuggestion mySuggestion=mySuggestionService.selectByPrimaryKey(null);
 		return ResourceHelper.returnSuccess(GSON.toJson(mySuggestion));
 	}
 }
