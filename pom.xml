@@ -63,6 +63,7 @@
   		<version>0.0.1-SNAPSHOT</version>
        </dependency>
   </dependencies>
+  <build>
   	<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -100,5 +101,6 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.3.7.v20160115</version>
 			</plugin>
-		</plugins>
+	</plugins>
+	</build>
 </project>

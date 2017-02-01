@@ -1,5 +1,6 @@
 package com.fengdai.suggestion.resource;
 
+import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -9,8 +10,10 @@ import javax.ws.rs.core.Response;
 
 import com.fengdai.rest.helper.ResourceHelper;
 import com.fengdai.suggestion.api.SuggestionApiProvider;
+import com.fengdai.suggestion.form.MySuggestionForm;
 import com.fengdai.suggestion.model.MySuggestion;
 import com.fengdai.suggestion.service.MySuggestionService;
+import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -32,9 +35,9 @@ public class SuggestionResoure{
 	}
 	
 	@GET
-	public Response getPage() {
+	public Response getPage(@BeanParam MySuggestionForm form) {
 		System.out.println("=----成功-----");
-		MySuggestion mySuggestion=mySuggestionService.selectByPrimaryKey(null);
+		PageInfo<MySuggestion> mySuggestion=mySuggestionService.pageMySuggestion(form);
 		return ResourceHelper.returnSuccess(GSON.toJson(mySuggestion));
 	}
 }
