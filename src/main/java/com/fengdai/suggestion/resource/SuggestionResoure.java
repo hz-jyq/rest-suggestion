@@ -3,6 +3,7 @@ package com.fengdai.suggestion.resource;
 import javax.validation.Valid;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -38,5 +39,11 @@ public class SuggestionResoure{
 	public Response getPage(@Valid @BeanParam MySuggestionForm form)throws Exception {
 		PageInfo<MySuggestion> mySuggestion=mySuggestionService.pageMySuggestion(form);
 		return ResourceHelper.returnSuccess(GSON.toJson(mySuggestion));
+	}
+	
+	@POST
+	public Response save(@BeanParam MySuggestion mySuggestion)throws Exception {
+		mySuggestionService.save(mySuggestion);
+		return ResourceHelper.returnSuccess(ResourceHelper.SUCCESS_JSON);
 	}
 }
