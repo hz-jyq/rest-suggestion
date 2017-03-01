@@ -1,5 +1,6 @@
 package com.fengdai.suggestion.resource;
 
+import javax.validation.Valid;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -28,15 +29,13 @@ public class SuggestionResoure{
 	
 	@GET
 	@Path("Detail")
-	public Response getDetail(@QueryParam("id") String id) {
-		System.out.println("=----成功-----");
+	public Response getDetail(@QueryParam("id") String id)  {
 		MySuggestion mySuggestion=mySuggestionService.selectByPrimaryKey(id);
 		return ResourceHelper.returnSuccess(GSON.toJson(mySuggestion));
 	}
 	
 	@GET
-	public Response getPage(@BeanParam MySuggestionForm form) {
-		System.out.println("=----成功-----");
+	public Response getPage(@Valid @BeanParam MySuggestionForm form)throws Exception {
 		PageInfo<MySuggestion> mySuggestion=mySuggestionService.pageMySuggestion(form);
 		return ResourceHelper.returnSuccess(GSON.toJson(mySuggestion));
 	}

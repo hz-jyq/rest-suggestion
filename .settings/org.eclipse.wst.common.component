@@ -15,9 +15,6 @@
         <dependent-module archiveName="dubbo-suggestion-client-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-suggestion-client/dubbo-suggestion-client">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="core-suggestion-api-0.0.1.M1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/core-suggestion-api/core-suggestion-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="rest-suggestion"/>
         <property name="java-output-path" value="/rest-suggestion/target/classes"/>
     </wb-module>
